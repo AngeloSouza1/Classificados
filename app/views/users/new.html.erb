@@ -1,0 +1,49 @@
+
+<nav>
+  <%= link_to t("menu.signup"), new_user_path %>
+  <%= link_to t("menu.signin"), new_session_path %>
+</nav>
+
+<p>
+<%= flash.notice %>
+<%= flash.notice %>
+</p>
+<h1><%=t("title.signup")%></h1>
+
+<% if @user.errors.any? %>
+  <p><%=t("title.error")%></p>
+
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+<%= form_for @user, url: "/users" do |form| %>
+ <div>
+   <%= form.label :name %>
+   <%= form.text_field  :name %>
+ </div>
+
+  <div>
+   <%= form.label :email, "Email" %>
+   <%= form.email_field :email %>
+  </div>
+
+  <div>
+   <%= form.label :password, "Senha" %>
+   <%= form.password_field  :password %>
+ </div>
+
+  <div>
+    <%= form.label :password_confirmation, "Confirmação de Senha" %>
+    <%= form.password_field  :password_confirmation %>
+  </div>
+
+  <div>
+    <%= form.submit "Cadastrar" %>
+  </div>
+
+<% end %>

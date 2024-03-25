@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Classificados</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body
+  <p>
+    <%= flash.notice %>
+    <%= flash.notice %>
+  </p>
+ <%= if user_signed_in? %>
+      <%= button_to t("menu.logout"), sign_out_sessions_path: :delete %>
+  <% else %>
+  <%= link_to t("menu.signup"), new_user_path %>
+  <%= link_to t("menu.signin"), new_session_path %>
+<% end %>
+
+
+    <%= yield %>
+  </body>
+</html>
